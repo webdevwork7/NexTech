@@ -7,25 +7,25 @@ const team = [
   {
     name: "Alex Thompson",
     role: "CEO & Founder",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face&q=80",
     bio: "10+ years in enterprise software development"
   },
   {
     name: "Sarah Kim",
     role: "CTO",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&q=80",
+    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face&q=80",
     bio: "Former Google engineer, AI/ML specialist"
   },
   {
     name: "Marcus Johnson",
     role: "Lead Designer",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face&q=80",
     bio: "Award-winning UX designer from Apple"
   },
   {
     name: "Priya Patel",
     role: "VP Engineering",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffbab6d0?w=300&q=80",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffbab6d0?w=300&h=300&fit=crop&crop=face&q=80",
     bio: "Cloud architecture expert, former AWS"
   }
 ];
@@ -85,11 +85,11 @@ const About = () => {
               return (
                 <Card 
                   key={value.title}
-                  className="glass-effect border-white/10 text-center animate-slide-up"
+                  className="glass-effect border-white/10 text-center animate-slide-up hover:border-primary/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 backdrop-blur-xl"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <CardContent className="p-8">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/30">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
@@ -118,16 +118,18 @@ const About = () => {
             {team.map((member, index) => (
               <Card 
                 key={member.name}
-                className="glass-effect border-white/10 text-center hover:border-primary/50 transition-all duration-300 transform hover:scale-105 animate-slide-up"
+                className="glass-effect border-white/10 text-center hover:border-primary/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 animate-slide-up backdrop-blur-xl group"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-6">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                  />
-                  <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
+                  <div className="relative mb-4">
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-24 h-24 rounded-full mx-auto object-cover ring-2 ring-primary/20 transition-all duration-500 group-hover:ring-primary/50 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/30"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 transition-colors duration-300 group-hover:text-primary">{member.name}</h3>
                   <p className="text-primary font-medium mb-3">{member.role}</p>
                   <p className="text-sm text-muted-foreground">{member.bio}</p>
                 </CardContent>
@@ -162,7 +164,7 @@ const About = () => {
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
-                    <Card className="glass-effect border-white/10">
+                    <Card className="glass-effect border-white/10 hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-primary/20 backdrop-blur-xl">
                       <CardContent className="p-4">
                         <div className="text-2xl font-bold text-primary mb-2">{milestone.year}</div>
                         <p className="text-muted-foreground">{milestone.event}</p>
@@ -170,7 +172,7 @@ const About = () => {
                     </Card>
                   </div>
                   
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full border-4 border-background"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full border-4 border-background transition-all duration-300 hover:scale-125 hover:shadow-lg hover:shadow-blue-500/50"></div>
                 </div>
               ))}
             </div>

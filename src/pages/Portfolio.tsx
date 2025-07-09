@@ -9,7 +9,7 @@ const projects = [
     id: 1,
     title: "FinTech Trading Platform",
     description: "Real-time cryptocurrency trading platform with advanced analytics, portfolio management, and AI-powered insights for institutional investors.",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop&crop=center&q=80",
     tech: ["React", "Node.js", "WebSocket", "Redis", "PostgreSQL", "AI/ML"],
     category: "Finance",
     features: ["Real-time data", "Advanced analytics", "Risk management", "API integration"],
@@ -19,7 +19,7 @@ const projects = [
     id: 2,
     title: "Healthcare Management System",
     description: "Comprehensive patient management system with telemedicine capabilities, appointment scheduling, and HIPAA-compliant data handling.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop&crop=center&q=80",
     tech: ["Vue.js", "Python", "PostgreSQL", "WebRTC", "Docker", "AWS"],
     category: "Healthcare",
     features: ["Telemedicine", "Patient records", "Appointment system", "Billing integration"],
@@ -29,7 +29,7 @@ const projects = [
     id: 3,
     title: "E-commerce Marketplace",
     description: "Multi-vendor marketplace with AI-powered recommendations, advanced search capabilities, and comprehensive seller dashboard.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&crop=center&q=80",
     tech: ["Next.js", "Microservices", "MongoDB", "Stripe", "Elasticsearch", "Docker"],
     category: "E-commerce",
     features: ["Multi-vendor support", "AI recommendations", "Payment processing", "Analytics"],
@@ -39,7 +39,7 @@ const projects = [
     id: 4,
     title: "Supply Chain Analytics",
     description: "Comprehensive supply chain optimization platform with predictive analytics, inventory management, and real-time tracking.",
-    image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&h=400&fit=crop&crop=center&q=80",
     tech: ["Angular", "Python", "TensorFlow", "Kafka", "Cassandra", "Kubernetes"],
     category: "Logistics",
     features: ["Predictive analytics", "Real-time tracking", "Inventory optimization", "Route planning"],
@@ -49,7 +49,7 @@ const projects = [
     id: 5,
     title: "EdTech Learning Platform",
     description: "Comprehensive learning management system with interactive content delivery, assessment tools, and progress tracking.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop&crop=center&q=80",
     tech: ["React", "Node.js", "MongoDB", "WebRTC", "Redis", "AWS"],
     category: "Education",
     features: ["Interactive content", "Video conferencing", "Assessment tools", "Progress tracking"],
@@ -59,7 +59,7 @@ const projects = [
     id: 6,
     title: "Real Estate CRM",
     description: "Complete real estate management platform with property listings, client management, and virtual tour capabilities.",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop&crop=center&q=80",
     tech: ["React", "Express", "PostgreSQL", "Three.js", "AWS S3", "Stripe"],
     category: "Real Estate",
     features: ["Property management", "Virtual tours", "Client CRM", "Document management"],
@@ -102,10 +102,10 @@ const Portfolio = () => {
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category)}
-                className={`transition-all duration-300 ${
+                className={`transition-all duration-500 backdrop-blur-xl ${
                   selectedCategory === category 
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white" 
-                    : "border-white/20 hover:bg-white/10"
+                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/30" 
+                    : "border-white/20 hover:bg-white/10 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20"
                 }`}
               >
                 <Filter className="w-4 h-4 mr-2" />
@@ -123,22 +123,23 @@ const Portfolio = () => {
             {filteredProjects.map((project, index) => (
               <Card 
                 key={project.id}
-                className="group glass-effect border-white/10 hover:border-primary/50 transition-all duration-300 transform hover:scale-105 overflow-hidden animate-slide-up"
+                className="group glass-effect border-white/10 hover:border-primary/50 transition-all duration-500 transform hover:scale-105 overflow-hidden animate-slide-up backdrop-blur-xl hover:shadow-2xl hover:shadow-primary/20"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="w-full h-48 object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-4 backdrop-blur-sm">
                     <div className="flex space-x-2">
-                      <Button size="sm" variant="secondary" className="opacity-90">
+                      <Button size="sm" variant="secondary" className="opacity-90 hover:opacity-100 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg">
                         <ExternalLink className="w-4 h-4 mr-1" />
                         Live Demo
                       </Button>
-                      <Button size="sm" variant="secondary" className="opacity-90">
+                      <Button size="sm" variant="secondary" className="opacity-90 hover:opacity-100 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg">
                         <Github className="w-4 h-4 mr-1" />
                         Case Study
                       </Button>
@@ -146,14 +147,14 @@ const Portfolio = () => {
                   </div>
                   
                   <div className="absolute top-4 left-4">
-                    <span className="text-xs px-2 py-1 bg-primary/90 text-white rounded-full">
+                    <span className="text-xs px-2 py-1 bg-primary/90 text-white rounded-full backdrop-blur-sm">
                       {project.category}
                     </span>
                   </div>
                 </div>
                 
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
                   
@@ -168,7 +169,7 @@ const Portfolio = () => {
                         {project.features.map((feature) => (
                           <span 
                             key={feature}
-                            className="text-xs px-2 py-1 bg-white/10 text-muted-foreground rounded"
+                            className="text-xs px-2 py-1 bg-white/10 text-muted-foreground rounded transition-all duration-300 hover:bg-white/20 hover:scale-105"
                           >
                             {feature}
                           </span>
@@ -182,7 +183,7 @@ const Portfolio = () => {
                         {project.tech.map((tech) => (
                           <span 
                             key={tech}
-                            className="text-xs px-2 py-1 bg-primary/20 text-primary rounded"
+                            className="text-xs px-2 py-1 bg-primary/20 text-primary rounded transition-all duration-300 hover:bg-primary/30 hover:scale-105"
                           >
                             {tech}
                           </span>
@@ -212,7 +213,7 @@ const Portfolio = () => {
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Let's create something amazing together. Contact us to discuss your next big idea.
             </p>
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105">
+            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30 backdrop-blur-sm">
               Get Started Today
             </Button>
           </div>

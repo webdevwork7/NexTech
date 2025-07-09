@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { COMPANY_CONFIG } from "@/config/company";
+import MapComponent from "@/components/MapComponent";
 
 const contactInfo = [
   {
@@ -120,11 +121,11 @@ const Contact = () => {
               return (
                 <Card 
                   key={info.title}
-                  className="glass-effect border-white/10 text-center hover:border-primary/50 transition-all duration-300 transform hover:scale-105 animate-slide-up"
+                  className="glass-effect border-white/10 text-center hover:border-primary/50 transition-all duration-500 transform hover:scale-105 animate-slide-up backdrop-blur-xl hover:shadow-2xl hover:shadow-primary/20"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <CardContent className="p-8">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/30">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">{info.title}</h3>
@@ -143,7 +144,7 @@ const Contact = () => {
         <div className="container-padding">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <Card className="glass-effect border-white/10 animate-slide-up">
+            <Card className="glass-effect border-white/10 animate-slide-up backdrop-blur-xl hover:border-primary/20 transition-all duration-500">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold">Start Your Project</CardTitle>
                 <p className="text-muted-foreground">Tell us about your project and we'll get back to you within 24 hours.</p>
@@ -158,7 +159,7 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="bg-white/5 border-white/20 focus:border-primary"
+                        className="bg-white/5 border-white/20 focus:border-primary backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
                         placeholder="Your full name"
                       />
                     </div>
@@ -170,7 +171,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="bg-white/5 border-white/20 focus:border-primary"
+                        className="bg-white/5 border-white/20 focus:border-primary backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -183,7 +184,7 @@ const Contact = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="bg-white/5 border-white/20 focus:border-primary"
+                        className="bg-white/5 border-white/20 focus:border-primary backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
                         placeholder="+1 (555) 123-4567"
                       />
                     </div>
@@ -193,7 +194,7 @@ const Contact = () => {
                         name="company"
                         value={formData.company}
                         onChange={handleInputChange}
-                        className="bg-white/5 border-white/20 focus:border-primary"
+                        className="bg-white/5 border-white/20 focus:border-primary backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
                         placeholder="Your company name"
                       />
                     </div>
@@ -203,7 +204,7 @@ const Contact = () => {
                     <div>
                       <label className="block text-sm font-medium mb-2">Service Needed</label>
                       <Select onValueChange={(value) => handleSelectChange("service", value)}>
-                        <SelectTrigger className="bg-white/5 border-white/20 focus:border-primary">
+                        <SelectTrigger className="bg-white/5 border-white/20 focus:border-primary backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
                         <SelectContent>
@@ -218,7 +219,7 @@ const Contact = () => {
                     <div>
                       <label className="block text-sm font-medium mb-2">Budget Range</label>
                       <Select onValueChange={(value) => handleSelectChange("budget", value)}>
-                        <SelectTrigger className="bg-white/5 border-white/20 focus:border-primary">
+                        <SelectTrigger className="bg-white/5 border-white/20 focus:border-primary backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
                           <SelectValue placeholder="Select budget range" />
                         </SelectTrigger>
                         <SelectContent>
@@ -240,7 +241,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       rows={5}
-                      className="bg-white/5 border-white/20 focus:border-primary"
+                      className="bg-white/5 border-white/20 focus:border-primary backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
                       placeholder="Tell us about your project goals, timeline, and any specific requirements..."
                     />
                   </div>
@@ -248,7 +249,7 @@ const Contact = () => {
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 text-lg font-semibold transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30 backdrop-blur-sm"
                   >
                     {isSubmitting ? (
                       "Sending..."
@@ -266,37 +267,29 @@ const Contact = () => {
             {/* Info & Map */}
             <div className="space-y-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
               {/* Quick Stats */}
-              <Card className="glass-effect border-white/10">
+              <Card className="glass-effect border-white/10 backdrop-blur-xl hover:border-primary/20 transition-all duration-500">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-6">Why Choose Us?</h3>
                   <div className="space-y-4">
-                    <div className="flex items-center">
-                      <Clock className="w-5 h-5 text-primary mr-3" />
+                    <div className="flex items-center group">
+                      <Clock className="w-5 h-5 text-primary mr-3 transition-all duration-300 group-hover:scale-110" />
                       <span className="text-sm">24-hour response time</span>
                     </div>
-                    <div className="flex items-center">
-                      <Users className="w-5 h-5 text-primary mr-3" />
+                    <div className="flex items-center group">
+                      <Users className="w-5 h-5 text-primary mr-3 transition-all duration-300 group-hover:scale-110" />
                       <span className="text-sm">50+ expert developers</span>
                     </div>
-                    <div className="flex items-center">
-                      <Award className="w-5 h-5 text-primary mr-3" />
+                    <div className="flex items-center group">
+                      <Award className="w-5 h-5 text-primary mr-3 transition-all duration-300 group-hover:scale-110" />
                       <span className="text-sm">200+ successful projects</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* Map Placeholder */}
-              <Card className="glass-effect border-white/10 overflow-hidden">
-                <div className="h-64 bg-gradient-to-br from-blue-900/20 to-purple-900/20 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold mb-2">Visit Our Office</h3>
-                    <p className="text-sm text-muted-foreground max-w-xs">
-                      {COMPANY_CONFIG.ADDRESS}
-                    </p>
-                  </div>
-                </div>
+              {/* Map */}
+              <Card className="glass-effect border-white/10 overflow-hidden backdrop-blur-xl hover:border-primary/20 transition-all duration-500">
+                <MapComponent />
               </Card>
             </div>
           </div>

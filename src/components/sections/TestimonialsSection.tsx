@@ -7,21 +7,21 @@ const testimonials = [
   {
     name: "Sarah Johnson",
     role: "CEO, TechStart Inc.",
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&q=80",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face&q=80",
     content: "NexTech Solutions transformed our business with their innovative approach. The AI-powered analytics platform they built increased our efficiency by 300%.",
     rating: 5
   },
   {
     name: "Michael Chen",
     role: "CTO, FinanceFlow",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&q=80",
     content: "Outstanding technical expertise and project management. They delivered our complex trading platform ahead of schedule with exceptional quality.",
     rating: 5
   },
   {
     name: "Emily Rodriguez",
     role: "Founder, HealthTech Pro",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffbab6d0?w=150&q=80",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffbab6d0?w=150&h=150&fit=crop&crop=face&q=80",
     content: "The team's attention to HIPAA compliance and user experience was remarkable. They created a healthcare platform that our patients absolutely love.",
     rating: 5
   }
@@ -44,13 +44,13 @@ export const TestimonialsSection = () => {
           {testimonials.map((testimonial, index) => (
             <Card 
               key={testimonial.name}
-              className="glass-effect border-white/10 hover:border-primary/50 transition-all duration-300 transform hover:scale-105 animate-slide-up"
+              className="glass-effect border-white/10 hover:border-primary/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 animate-slide-up backdrop-blur-xl"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400 transition-all duration-300 hover:scale-110" />
                   ))}
                 </div>
                 
@@ -62,7 +62,7 @@ export const TestimonialsSection = () => {
                 </div>
                 
                 <div className="flex items-center">
-                  <Avatar className="w-12 h-12 mr-4">
+                  <Avatar className="w-12 h-12 mr-4 ring-2 ring-primary/20 transition-all duration-300 hover:ring-primary/50 hover:scale-110">
                     <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                     <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                   </Avatar>
