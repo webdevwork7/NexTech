@@ -4,6 +4,7 @@ import { MapPin } from 'lucide-react';
 
 const MapComponent = () => {
   const mapRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const MapComponent = () => {
     <div className="relative w-full h-64 bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-lg overflow-hidden">
       {isLoaded ? (
         <iframe
-          ref={mapRef}
+          ref={iframeRef}
           src="https://www.openstreetmap.org/export/embed.html?bbox=77.5945627,12.9715987,77.6045627,12.9815987&layer=mapnik&marker=12.9765987,77.5995627"
           className="w-full h-full border-0 filter brightness-75 contrast-125"
           title="Office Location"
