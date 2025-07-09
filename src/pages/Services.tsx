@@ -1,8 +1,9 @@
 
-import { Code, Smartphone, Palette, Cloud, Brain, Shield, ArrowRight } from "lucide-react";
+import { Code, Smartphone, Palette, Cloud, Brain, Shield, ArrowRight, Phone } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { COMPANY_CONFIG } from "@/config/company";
 
 const services = [
   {
@@ -92,6 +93,10 @@ const services = [
 ];
 
 const Services = () => {
+  const handleCallNow = () => {
+    window.open(`tel:${COMPANY_CONFIG.PHONE}`, '_self');
+  };
+
   return (
     <div className="pt-16">
       {/* Hero Section */}
@@ -151,7 +156,7 @@ const Services = () => {
                       
                       <div>
                         <h4 className="font-semibold text-foreground mb-3">Technologies:</h4>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-2 mb-4">
                           {service.technologies.map((tech) => (
                             <span 
                               key={tech}
@@ -161,6 +166,17 @@ const Services = () => {
                             </span>
                           ))}
                         </div>
+                      </div>
+
+                      {/* Call Now Button */}
+                      <div className="pt-4 border-t border-white/10">
+                        <Button 
+                          onClick={handleCallNow}
+                          className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border border-green-400/50 text-white font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-400/25"
+                        >
+                          <Phone className="w-4 h-4 mr-2" />
+                          Call Now: {COMPANY_CONFIG.PHONE}
+                        </Button>
                       </div>
                     </div>
                   </CardContent>
@@ -181,12 +197,22 @@ const Services = () => {
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Let's discuss your project and find the perfect solution for your business needs.
             </p>
-            <Link to="/contact">
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105">
-                Start Your Project
-                <ArrowRight className="ml-2 w-5 h-5" />
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link to="/contact">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105">
+                  Start Your Project
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+              <Button 
+                onClick={handleCallNow}
+                size="lg" 
+                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border border-green-400/50 text-white px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
+              >
+                <Phone className="w-4 h-4 mr-2" />
+                Call Now: {COMPANY_CONFIG.PHONE}
               </Button>
-            </Link>
+            </div>
           </div>
         </div>
       </section>

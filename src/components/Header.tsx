@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { COMPANY_CONFIG } from "@/config/company";
 
@@ -26,6 +26,10 @@ export const Header = () => {
   const handleLinkClick = () => {
     setMobileMenuOpen(false);
     scrollToTop();
+  };
+
+  const handleCallNow = () => {
+    window.open(`tel:${COMPANY_CONFIG.PHONE}`, '_self');
   };
 
   return (
@@ -63,11 +67,13 @@ export const Header = () => {
           </div>
 
           <div className="hidden md:block">
-            <Link to="/contact" onClick={scrollToTop}>
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
-                Get Started
-              </Button>
-            </Link>
+            <Button 
+              onClick={handleCallNow}
+              className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 border border-green-400/50 hover:shadow-lg hover:shadow-green-400/25"
+            >
+              <Phone className="w-4 h-4 mr-2" />
+              Call Now: {COMPANY_CONFIG.PHONE}
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -101,11 +107,16 @@ export const Header = () => {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Link to="/contact" onClick={handleLinkClick}>
-                  <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                    Get Started
-                  </Button>
-                </Link>
+                <Button 
+                  onClick={() => {
+                    handleCallNow();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 border border-green-400/50"
+                >
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call Now: {COMPANY_CONFIG.PHONE}
+                </Button>
               </div>
             </div>
           </div>

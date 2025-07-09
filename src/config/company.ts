@@ -1,8 +1,8 @@
 
 export const COMPANY_CONFIG = {
   COMPANY_NAME: "NexTech Solutions",
-  EMAIL: "hello@nextechsolutions.com",
-  PHONE: "+1 (555) 123-4567",
+  EMAIL: "support@nextechsolutions.site",
+  PHONE: "+91-9876543210",
   ADDRESS: "123 Innovation Drive, Tech Valley, CA 94025",
   SOCIAL: {
     linkedin: "https://linkedin.com/company/nextech-solutions",

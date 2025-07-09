@@ -7,21 +7,21 @@ const projects = [
   {
     title: "FinTech Trading Platform",
     description: "Real-time cryptocurrency trading platform with advanced analytics and AI-powered insights.",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop&crop=center&q=80",
     tech: ["React", "Node.js", "WebSocket", "AI/ML"],
     category: "Finance"
   },
   {
     title: "Healthcare Management System",
     description: "Comprehensive patient management system with telemedicine capabilities and HIPAA compliance.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop&crop=center&q=80",
     tech: ["Vue.js", "Python", "PostgreSQL", "WebRTC"],
     category: "Healthcare"
   },
   {
     title: "E-commerce Marketplace",
     description: "Multi-vendor marketplace with AI-powered recommendations and advanced analytics dashboard.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&crop=center&q=80",
     tech: ["Next.js", "Microservices", "MongoDB", "Stripe"],
     category: "E-commerce"
   }
@@ -52,6 +52,11 @@ export const PortfolioSection = () => {
                   src={project.image} 
                   alt={project.title}
                   className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                  loading="lazy"
+                  onError={(e) => {
+                    // Fallback to a placeholder if image fails to load
+                    e.currentTarget.src = `https://via.placeholder.com/600x400/1a1a1a/ffffff?text=${encodeURIComponent(project.title)}`;
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                   <div className="flex space-x-2">
