@@ -1,6 +1,6 @@
 export const COMPANY_CONFIG = {
-  COMPANY_NAME: "NexTech Solutions",
-  EMAIL: "support@nextechsolutions.site",
+  COMPANY_NAME: "Softora",
+  EMAIL: "support@softora.site",
   PHONE: "+1 (555) 123-4567",
   ADDRESS: "123 Innovation Drive, Tech Valley, CA 94025",
   SOCIAL: {
